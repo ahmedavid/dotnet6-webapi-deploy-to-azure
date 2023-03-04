@@ -24,4 +24,7 @@ data "azurerm_resource_group" "existing_rg" {
 resource "azurerm_resource_group" "tf_test" {
   name     = data.azurerm_resource_group.existing_rg.name
   location = data.azurerm_resource_group.existing_rg.location
+  lifecycle {
+    prevent_destroy = true
+  }
 }
