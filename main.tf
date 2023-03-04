@@ -21,8 +21,8 @@ output "resource_group_location" {
 }
 resource "azurerm_container_group" "tfcg_test" {
   name = "weatherapi"
-  location = azurerm_resource_group.existing_rg.location
-  resource_group_name = azurerm_resource_group.existing_rg.name
+  location = data.azurerm_resource_group.existing_rg.location
+  resource_group_name = data.azurerm_resource_group.existing_rg.name
 
   ip_address_type = public
   dns_name_label = "ahmedavidwa"
