@@ -24,7 +24,7 @@ resource "azurerm_container_group" "tfcg_test" {
   location = data.azurerm_resource_group.existing_rg.location
   resource_group_name = data.azurerm_resource_group.existing_rg.name
 
-  ip_address_type = "public"
+  ip_address_type = "Public"
   dns_name_label = "ahmedavidwa"
   os_type = "Linux"
 
