@@ -16,7 +16,7 @@ data "azurerm_resource_group" "existing_rg" {
   name = "ODL-azure-878220"
 }
 
-resource "azure_container_group" "tfcg_test" {
+resource "azurerm_container_group" "tfcg_test" {
   name = "weatherapi"
   location = azurerm_resource_group.existing_rg.location
   resource_group_name = azurerm_resource_group.existing_rg.name
