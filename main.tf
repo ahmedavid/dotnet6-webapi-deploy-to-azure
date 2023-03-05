@@ -5,6 +5,13 @@ terraform {
       version = "3.46.0"
     }
   }
+
+  backend "azurerm" {
+    resource_group_name = "storage_rg"
+    storage_account_name = "ahmedavid"
+    container_name = "tfstate"
+    key = "terraform.tfstate"
+  }
 }
 
 provider "azurerm" {
@@ -12,13 +19,22 @@ provider "azurerm" {
   features {}
 }
 
-data "azurerm_resource_group" "terraform_devops_rg" {
-  name = "terraform_devops"
+variable "imagebuild" {
+  type        = string
+  description = "Latest Image Build"
 }
 
-output "resource_group_location" {
-  value = data.azurerm_resource_group.terraform_devops_rg.location
+resource "azurerm_resource_group" "terraform_devops_rg" {
+  name = "terraform_devops"
+  location = "germanywestcentral"
 }
+# data "azurerm_resource_group" "terraform_devops_rg" {
+#   name = "terraform_devops"
+# }
+
+# output "resource_group_location" {
+#   value = data.azurerm_resource_group.terraform_devops_rg.location
+# }
 resource "azurerm_container_group" "tfcg_test" {
   name = "weatherapi"
   location = data.azurerm_resource_group.terraform_devops_rg.location
@@ -30,7 +46,7 @@ resource "azurerm_container_group" "tfcg_test" {
 
   container {
     name = "weatherapi"
-    image = "ahmedavid/webapi"
+    image = "ahmedavid/webapi:${var.imagebuild}"
     cpu = "1"
     memory = "1"
 
