@@ -35,6 +35,8 @@ resource "azurerm_resource_group" "terraform_devops_rg" {
 # output "resource_group_location" {
 #   value = data.azurerm_resource_group.terraform_devops_rg.location
 # }
+
+
 resource "azurerm_container_group" "tfcg_test" {
   name = "weatherapi"
   location = azurerm_resource_group.terraform_devops_rg.location
