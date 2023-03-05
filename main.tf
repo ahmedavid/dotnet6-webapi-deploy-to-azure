@@ -37,8 +37,8 @@ resource "azurerm_resource_group" "terraform_devops_rg" {
 # }
 resource "azurerm_container_group" "tfcg_test" {
   name = "weatherapi"
-  location = data.azurerm_resource_group.terraform_devops_rg.location
-  resource_group_name = data.azurerm_resource_group.terraform_devops_rg.name
+  location = azurerm_resource_group.terraform_devops_rg.location
+  resource_group_name = azurerm_resource_group.terraform_devops_rg.name
 
   ip_address_type = "Public"
   dns_name_label = "ahmedavidwa"
