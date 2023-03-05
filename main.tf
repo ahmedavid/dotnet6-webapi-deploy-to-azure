@@ -13,7 +13,7 @@ provider "azurerm" {
 }
 
 data "azurerm_resource_group" "existing_rg" {
-  name = "ODL-azure-878339"
+  name = "azure_devops"
 }
 
 output "resource_group_location" {
