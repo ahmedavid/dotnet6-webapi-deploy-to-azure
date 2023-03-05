@@ -24,7 +24,7 @@ stages:
       displayName: Build an image
       inputs:
         containerRegistry: 'DockerHub'
-        repository: 'ahmedavid'
+        repository: 'webapi'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: |
