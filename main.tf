@@ -21,6 +21,7 @@ provider "azurerm" {
 
 variable "imagebuild" {
   type        = string
+  default = "111"
   description = "Latest Image Build"
 }
 
