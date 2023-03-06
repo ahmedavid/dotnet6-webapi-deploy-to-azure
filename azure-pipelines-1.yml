@@ -12,6 +12,7 @@ pool:
 steps:
 - script: |
     set -e
+    terraform init -input=false
     terraform destroy -input=false --auto-approve
   env:
     ARM_CLIENT_ID: $(ARM_CLIENT_ID)
